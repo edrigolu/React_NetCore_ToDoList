@@ -21,7 +21,6 @@ function App() {
               <IndiceEstados></IndiceEstados>
             </Route>
           </Switch>
-
         </div>
       </BrowserRouter>
     </>
