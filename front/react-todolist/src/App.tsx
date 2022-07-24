@@ -1,9 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Route, Switch } from 'react-router';
 import Menu from './utils/Menu';
 import IndiceEstados from './estados/IndiceEstados';
 import { BrowserRouter } from 'react-router-dom';
+import LandingPage from './LandingPage';
+
 
 function App() {
   return (
@@ -13,20 +15,7 @@ function App() {
         <div className="container">
           <Switch>
             <Route exact path="/">
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Aplicación para lista de tareas
-                </p>
-                {/* <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a> */}
-              </header>
+              <LandingPage></LandingPage>
             </Route>
             <Route path="/estados">
               <IndiceEstados></IndiceEstados>
