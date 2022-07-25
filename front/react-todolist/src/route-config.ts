@@ -4,7 +4,7 @@ import IndiceEstados from "./estados/IndiceEstados";
 import LandingPage from "./LandingPage";
 import CrearTarea from "./tareas/CrearTarea";
 import EditarTarea from "./tareas/EditarTarea";
-import ListadoTareas from "./tareas/ListadoTareas";
+import FiltroTareas from "./tareas/FiltroTareas";
 
 const rutas = [
     { path: '/estados/crear', componente: CrearEstado },
@@ -12,7 +12,7 @@ const rutas = [
     { path: '/estados', componente: IndiceEstados },
     { path: '/tareas/crear', componente: CrearTarea },
     { path: '/tareas/editar', componente: EditarTarea },
-    { path: '/tareas', componente: ListadoTareas },
+    { path: '/tareas/filtrar', componente: FiltroTareas},
     { path: '/', componente: LandingPage, exact: true },
 ];
 

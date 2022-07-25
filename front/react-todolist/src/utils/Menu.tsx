@@ -10,6 +10,16 @@ export default function Menu() {
                                 Estados
                             </a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/tareas/filtrar">
+                               Filtrar Tareas
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/tareas/crear">
+                               Crear Tareas
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
