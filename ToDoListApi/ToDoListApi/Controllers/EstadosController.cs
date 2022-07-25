@@ -37,46 +37,60 @@ namespace ToDoListApi.Controllers
         }
 
         // GET: api/Estados/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Estado>> GetEstado(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<EstadoDTO>> Get(int id)
         {
-            var estado = await _context.Estados.FindAsync(id);
+            var estado = await _context.Estados.FirstOrDefaultAsync(x => x.Id == id);
 
             if (estado == null)
             {
                 return NotFound();
             }
 
-            return estado;
+            return _mapper.Map<EstadoDTO>(estado);
         }
 
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEstado(int id, Estado estado)
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutEstado(int id, Estado estado)
+        //{
+        //    if (id != estado.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    _context.Entry(estado).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!EstadoExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return NoContent();
+        //}
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int id, [FromBody] EstadoCreacionDTO estadoCreacionDTO)
         {
-            if (id != estado.Id)
-            {
-                return BadRequest();
-            }
+            var estado = await _context.Estados.FirstOrDefaultAsync(x => x.Id == id);
 
-            _context.Entry(estado).State = EntityState.Modified;
-
-            try
+            if (estado == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EstadoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            estado = _mapper.Map(estadoCreacionDTO, estado);
+            await _context.SaveChangesAsync();
             return NoContent();
         }
 
