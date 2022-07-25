@@ -1,29 +1,27 @@
-
 import './App.css';
 import { Route, Switch } from 'react-router';
 import Menu from './utils/Menu';
-import IndiceEstados from './estados/IndiceEstados';
 import { BrowserRouter } from 'react-router-dom';
-import LandingPage from './LandingPage';
-
+import rutas from './route-config'
+import React from 'react';
 
 function App() {
   return (
-    <>
+    <React.Fragment>
       <BrowserRouter>
         <Menu />
         <div className="container">
           <Switch>
-            <Route exact path="/">
-              <LandingPage></LandingPage>
-            </Route>
-            <Route path="/estados">
-              <IndiceEstados></IndiceEstados>
-            </Route>
+            {rutas.map(ruta =>
+              <Route key={ruta.path}
+                path={ruta.path}
+                exact={ruta.exact}>
+                <ruta.componente />
+              </Route>)}
           </Switch>
         </div>
       </BrowserRouter>
-    </>
+    </React.Fragment>
   );
 }
 
