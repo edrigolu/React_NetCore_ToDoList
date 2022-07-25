@@ -8,7 +8,7 @@ export default function TareaIndividual(props: tareaIndividualProps) {
     return (
         <div className={css.div}>
             <p>
-                <a href={construirLink()}>{props.tarea.descripcion}</a>
+                <a href={construirLink()}>{props.tarea.titulo}</a>
             </p>
             <p>
                 <a href={construirLink()}>{props.tarea.estado}</a>

@@ -11,18 +11,19 @@ export default function LandingPage() {
                 noCompletada: [
                     {
                         id: 1,
-                        descripcion: 'Diseñar interface usuarios',
+                        titulo: 'Diseñar interface usuarios',
                         estado: 'No completada'
                     },
                     {
                         id: 2,
-                        descripcion: 'Sacar copia base de datos',
+                        titulo: 'Sacar copia base de datos',
                         estado: 'No completada'
                     }
                 ],
                 completada: [
                     {
-                        id: 3, descripcion: 'Levantar requerimiento',
+                        id: 3, 
+                        titulo: 'Levantar requerimiento',
                         estado: 'Completada'
                     }
                 ]

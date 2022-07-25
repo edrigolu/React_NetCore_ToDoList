@@ -1,9 +1,12 @@
 export interface tarea {
     id: number;
-    descripcion: string;
+    titulo: string;
     estado: string;
 }
 
+export interface tareaCreacionDTO {
+    titulo: string;
+}
 export interface landingPageDTO {
     completada?: tarea[];
     noCompletada?: tarea[];
