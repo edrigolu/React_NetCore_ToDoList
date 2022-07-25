@@ -45,7 +45,7 @@ export default function IndiceEstados() {
                                 {estado.nombre}
                             </td>
                             <td>
-                                <a className="btn btn-success" href={`/estados/${estado.id}`}>Editar</a>
+                                <a className="btn btn-success" href={`/estados/editar/${estado.id}`}>Editar</a>
                                 <Button className="btn btn-danger">Borrar</Button>
                             </td>
                         </tr>)}
