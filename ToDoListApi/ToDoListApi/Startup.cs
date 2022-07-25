@@ -28,6 +28,16 @@ namespace ToDoListApi
                 options.Filters.Add(typeof(FiltroDeExcepcion));                
             });
 
+            services.AddCors(options =>
+            {
+                var frontendURL = Configuration.GetValue<string>("frontend_url");
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader()
+                    .WithExposedHeaders(new string[] { "cantidadTotalRegistros" });
+                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ToDoListApi", Version = "v1" });
@@ -45,6 +55,8 @@ namespace ToDoListApi
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
 
             app.UseRouting();
 

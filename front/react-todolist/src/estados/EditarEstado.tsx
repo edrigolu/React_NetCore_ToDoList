@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom"
 import FormularioEstados from "./FormularioEstados";
 
 export default function EditarEstado() {

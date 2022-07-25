@@ -1,6 +1,15 @@
-import React from "react";
+import axios, { AxiosResponse } from "axios";
+import React, { useEffect } from "react";
+import { urlEstados } from "../utils/endpoints";
+import { estadoDTO } from "./estados.model";
 
 export default function IndiceEstados() {
+    useEffect(() => {
+        axios.get(urlEstados)
+            .then((respuesta: AxiosResponse<estadoDTO[]>) => {
+                console.log(respuesta.data);
+            })
+    }, [])
     return (
         <React.Fragment>
             <h3>Indice Estados</h3>
