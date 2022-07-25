@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using ToDoListApi.Validaciones;
 
-namespace ToDoListApi.Entidades
+namespace ToDoListApi.DTOs
 {
-    public class Estado
+    public class EstadoCreacionDTO
     {
-        public int Id { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [StringLength(maximumLength: 50)]
         [PrimeraLetraMayuscula]
