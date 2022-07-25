@@ -49,41 +49,12 @@ namespace ToDoListApi.Controllers
 
             return _mapper.Map<EstadoDTO>(estado);
         }
-
-
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutEstado(int id, Estado estado)
-        //{
-        //    if (id != estado.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(estado).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!EstadoExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+               
 
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] EstadoCreacionDTO estadoCreacionDTO)
         {
-            var estado = await _context.Estados.FirstOrDefaultAsync(x => x.Id == id);
+            Estado estado = await _context.Estados.FirstOrDefaultAsync(x => x.Id == id);
 
             if (estado == null)
             {
@@ -98,25 +69,25 @@ namespace ToDoListApi.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] EstadoCreacionDTO estadoCreacionDTO)
         {
-            var estado = _mapper.Map<Estado>(estadoCreacionDTO);
+            Estado estado = _mapper.Map<Estado>(estadoCreacionDTO);
             _context.Add(estado);
             await _context.SaveChangesAsync();
             return NoContent();
         }
 
         // DELETE: api/Estados/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEstado(int id)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
         {
-            var estado = await _context.Estados.FindAsync(id);
-            if (estado == null)
+            bool existe = await _context.Estados.AnyAsync(x => x.Id == id);
+
+            if (!existe)
             {
                 return NotFound();
             }
 
-            _context.Estados.Remove(estado);
+            _context.Remove(new Estado() { Id = id });
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
