@@ -29,6 +29,7 @@ export default function FiltroTareas() {
                                 />
                             </div>
                             <div className="form-group mx-sm-3 mb-2">
+                            <label htmlFor="titulo" className="sr-only">Estado</label>
                                 <select className="form-control"
                                     {...formikProps.getFieldProps('estadoId')}
                                 >
@@ -49,7 +50,6 @@ export default function FiltroTareas() {
             </Formik>
         </React.Fragment>
     )
-
 }
 
 interface filtroTareasForm {
