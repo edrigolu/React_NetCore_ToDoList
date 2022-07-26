@@ -16,8 +16,8 @@ export default function Menu() {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/tareas/crear">
-                               Crear Tareas
+                            <a className="nav-link" href="/tareas">
+                               Tareas
                             </a>
                         </li>
                     </ul>

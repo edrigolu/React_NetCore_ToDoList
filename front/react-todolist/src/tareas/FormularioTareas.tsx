@@ -4,15 +4,26 @@ import * as Yup from "yup";
 import FormGroupText from "../utils/FormGroupText";
 import Button from "../utils/Button";
 import { estadoDTO } from "../estados/estados.model";
+import { useEffect, useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import { urlEstados } from "../utils/endpoints";
 
 export default function FormularioTareas(props: formularioTareasProps) {
-
-    const estados: estadoDTO[] = [{ id: 1, nombre: 'Completada' }, { id: 2, nombre: 'No Completada' }]
+    const [estados, setEstados] = useState<estadoDTO[]>([]);
+    useEffect(() => {
+        axios.get(`${urlEstados}/todos`)
+            .then((respuesta: AxiosResponse<estadoDTO[]>) => {
+                setEstados(respuesta.data);
+            })
+    }, [])
+    
     return (
         <Formik initialValues={props.modelo}
             onSubmit={props.onSubmit}
             validationSchema={Yup.object({
-                titulo: Yup.string().required('Este campo es requerido').primeraLetraMayuscula()
+                titulo: Yup.string().required('Este campo es requerido')
+                .max(50,'La longitud maxima es de 50 caracteres.')
+                .primeraLetraMayuscula()
             })}>
             {formikProps => (
                 <Form>
@@ -28,8 +39,8 @@ export default function FormularioTareas(props: formularioTareasProps) {
                                 value={estado.id}>{estado.nombre}</option>)}
                         </select>
                     </div>
-                    <Button disabled={formikProps.isSubmitting} type="submit">Enviar</Button>
-                    <a className="btn btn-secondary" href="/">Cancelar</a>
+                    <Button disabled={formikProps.isSubmitting} type="submit">Guardar</Button>
+                    <a className="btn btn-secondary" href="/tareas">Cancelar</a>
                 </Form>
             )}
         </Formik>

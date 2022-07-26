@@ -11,7 +11,7 @@ using ToDoListApi.Utilidades;
 
 namespace ToDoListApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/estados")]
     [ApiController]
     public class EstadosController : ControllerBase
     {
@@ -49,7 +49,15 @@ namespace ToDoListApi.Controllers
 
             return _mapper.Map<EstadoDTO>(estado);
         }
-               
+
+
+        [HttpGet("todos")]
+        public async Task<ActionResult<List<EstadoDTO>>> Todos()
+        {
+            var estados= await _context.Estados.OrderBy(x => x.Nombre).ToListAsync();
+            return _mapper.Map<List<EstadoDTO>>(estados);
+        }
+
 
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] EstadoCreacionDTO estadoCreacionDTO)

@@ -10,6 +10,9 @@ namespace ToDoListApi.Utilidades
         {
             CreateMap<Estado, EstadoDTO>().ReverseMap();
             CreateMap<EstadoCreacionDTO, Estado>();
+            CreateMap<Tarea, TareaDTO>().ReverseMap();
+            CreateMap<TareaCreacionDTO, Tarea>();
+
         }
     }
 }

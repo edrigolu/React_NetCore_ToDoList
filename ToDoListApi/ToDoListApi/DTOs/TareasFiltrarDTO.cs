@@ -9,8 +9,6 @@
             get { return new PaginacionDTO() { Pagina = Pagina, RecordsPorPagina = RecordsPorPagina }; }
         }
         public string Titulo { get; set; }
-        public int EstadoId { get; set; }
-        public bool Completada { get; set; }
-        public bool NoCompletada { get; set; }
+        public int EstadoId { get; set; }        
     }
 }

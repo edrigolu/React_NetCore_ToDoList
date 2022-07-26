@@ -1,5 +1,5 @@
 import css from './TareaIndividual.module.css'
-import { tarea } from './tareas.model';
+import { tareaDTO } from './tareas.model';
 
 export default function TareaIndividual(props: tareaIndividualProps) {
 
@@ -10,13 +10,13 @@ export default function TareaIndividual(props: tareaIndividualProps) {
             <p>
                 <a href={construirLink()}>{props.tarea.titulo}</a>
             </p>
-            <p>
+            {/* <p>
                 <a href={construirLink()}>{props.tarea.estado}</a>
-            </p>
+            </p> */}
         </div>
     )
 }
 
 interface tareaIndividualProps {
-    tarea: tarea;
+    tarea: tareaDTO;
 }

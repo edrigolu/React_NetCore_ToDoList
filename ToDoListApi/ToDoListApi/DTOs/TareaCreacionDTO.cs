@@ -9,6 +9,6 @@ namespace ToDoListApi.DTOs
         [StringLength(maximumLength: 50)]
         public string Titulo { get; set; }
         
-        public List<int> EstadosIds { get; set; }
+        public List<int> EstadoId { get; set; }
     }
 }

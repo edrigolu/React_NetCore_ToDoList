@@ -5,6 +5,7 @@ import LandingPage from "./LandingPage";
 import CrearTarea from "./tareas/CrearTarea";
 import EditarTarea from "./tareas/EditarTarea";
 import FiltroTareas from "./tareas/FiltroTareas";
+import IndiceTareas from "./tareas/IndiceTareas";
 import RedireccionarALanding from "./utils/RedireccionarALanding";
 
 const rutas = [
@@ -14,6 +15,7 @@ const rutas = [
     { path: '/tareas/crear', componente: CrearTarea },
     { path: '/tareas/editar/:id(\\d+)', componente: EditarTarea },
     { path: '/tareas/filtrar', componente: FiltroTareas },
+    { path: '/tareas', componente: IndiceTareas, exact: true },
     { path: '/', componente: LandingPage, exact: true },
     { path: '*', componente: RedireccionarALanding }
 ];

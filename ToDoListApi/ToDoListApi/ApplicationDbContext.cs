@@ -9,6 +9,17 @@ namespace ToDoListApi
         {
         }
 
-       public DbSet<Estado> Estados { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            //modelBuilder.Entity<TareaEstado>()
+            //    .HasKey(x => new { x.TareaId, x.EstadoId });
+            //base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<Estado> Estados { get; set; }       
+        public DbSet<Tarea> Tareas { get; set; }
+        
+
     }
 }

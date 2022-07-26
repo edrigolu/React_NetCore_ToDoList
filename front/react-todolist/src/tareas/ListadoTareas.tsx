@@ -1,5 +1,5 @@
 import ListadoGenerico from "../utils/ListadoGenerico";
-import { tarea } from "./tareas.model";
+import { tareaDTO } from "./tareas.model";
 import css from './ListadoTareas.module.css'
 import TareaIndividual from "./TareaInvidual";
 
@@ -17,5 +17,5 @@ export default function ListadoTareas(props: listadoTareasProps) {
 }
 
 interface listadoTareasProps {
-    tareas?: tarea[]
+    tareas?: tareaDTO[]
 }

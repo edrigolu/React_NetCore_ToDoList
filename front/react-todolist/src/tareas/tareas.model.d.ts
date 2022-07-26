@@ -1,11 +1,14 @@
-export interface tarea {
+import { estadoDTO } from "../estados/estados.model";
+
+export interface tareaDTO {
     id: number;
     titulo: string;
-    estado: string;
+    // estadoId: string;
 }
 
 export interface tareaCreacionDTO {
     titulo: string;
+    estadoId: number;
 }
 export interface landingPageDTO {
     completada?: tarea[];
